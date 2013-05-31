@@ -15,3 +15,12 @@
 *.exe
 *.out
 *.app
+/.sysfsexample.ko.cmd
+/.sysfsexample.mod.o.cmd
+/.sysfsexample.o.cmd
+/.tmp_versions/
+/Module.symvers
+/modules.order
+/sysfsexample.ko
+/sysfsexample.mod.c
+
