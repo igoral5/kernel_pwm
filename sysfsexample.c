@@ -64,13 +64,13 @@ static int pwm_fun(void *arg)
         pwm_full = atomic_read(&my_second.value);
         if (on)
         {
-            //printk(KERN_INFO "Level low\n");
-            udelay(pwm_full - pwm_on);
+            printk(KERN_INFO "Level low\n");
+            msleep(pwm_full - pwm_on);
         }
         else
         {
-            //printk(KERN_INFO "Level high\n");
-            udelay(pwm_on);
+            printk(KERN_INFO "Level high\n");
+            msleep(pwm_on);
         }
         on = !on;
     }
