@@ -15,12 +15,12 @@
 *.exe
 *.out
 *.app
-/.sysfsexample.ko.cmd
-/.sysfsexample.mod.o.cmd
-/.sysfsexample.o.cmd
+/.soft_pwm.ko.cmd
+/.soft_pwm.mod.o.cmd
+/.soft_pwm.o.cmd
 /.tmp_versions/
 /Module.symvers
 /modules.order
-/sysfsexample.ko
-/sysfsexample.mod.c
+/soft_pwm.ko
+/soft_pwm.mod.c
 

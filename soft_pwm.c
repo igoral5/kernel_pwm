@@ -98,7 +98,7 @@ static int pwm_fun(void *arg)
     printk(KERN_INFO "Address pwm_on 0x%p\n",pwm->pwm_on);
     if ((err = gpio_request_one(pwm->gpio, GPIOF_OUT_INIT_HIGH, "soft_pwm")))
     {
-        printk(KERN_INFO "Error in gpio_request_one\n");
+        printk(KERN_ERR "Error in gpio_request_one\n");
         goto exit;
     }
     while(!kthread_should_stop())
