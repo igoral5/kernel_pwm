@@ -144,7 +144,7 @@ static int __init soft_pwm_module_init(void)
     kobject_init(mykobj, &mytype);
     if ((err = kobject_add(mykobj, NULL, "%s", "soft_pwm"))) 
     {
-        printk("Sysfs creation failed\n");
+        printk(KERN_ERR "Sysfs creation failed\n");
         goto free_kobj;
     }
     printk(KERN_INFO "Address pwm0 0x%p\n", &pwm0);
