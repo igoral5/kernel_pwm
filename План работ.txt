@@ -109,13 +109,10 @@ igor@igoral5 ~ $ mkdir raspberry
 igor@igoral5 ~ $ cd raspberry/
 igor@igoral5 ~/raspberry $ git clone https://github.com/raspberrypi/linux.git
 igor@igoral5 ~/raspberry $ cd linux
-igor@igoral5 ~/raspberry/linux $
 
 Берем  конфиг ядра с работающей raspberry:
 
 igor@igoral5 ~/raspberry/linux $ scp pi@192.168.100.139:/proc/config.gz .
-pi@192.168.100.139's password: 
-config.gz                                                                                                        100%   19KB  19.3KB/s  19.3KB/s   00:00    
 igor@igoral5 ~/raspberry/linux $ zcat config.gz > .config
 igor@igoral5 ~/raspberry/linux $ make -j 4 ARCH=arm CROSS_COMPILE=/opt/tools/arm-bcm2708/arm-bcm2708-linux-gnueabi/bin/arm-bcm2708-linux-gnueabi- oldconfig
 igor@igoral5 ~/raspberry/linux $ make -j 4 ARCH=arm CROSS_COMPILE=/opt/tools/arm-bcm2708/arm-bcm2708-linux-gnueabi/bin/arm-bcm2708-linux-gnueabi- zImage
