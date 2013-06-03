@@ -47,7 +47,7 @@ menuconfig GPIOLIB
 
           If unsure, say N.
           
-Для создания каталога /sys/class/gpio должна быть включена поддержка файловой системы SYSFS;
+Для создания каталога /sys/class/gpio должна быть включена поддержка файловой системы SYSFS:
 
 config GPIO_SYSFS
         bool "/sys/class/gpio/... (sysfs interface)"
@@ -103,7 +103,7 @@ void gpio_set_value(unsigned gpio, int value);
 2. Для того что-бы собрать в режиме кросс компиляции свой модуль ядра небходимо иметь собранное ядро на host машине. 
 Источник: http://www.grendelman.net/wp/cross-compiling-kernel-modules-for-raspbian/
 С учетом того, что у меня уже стоял toolchain для сборки программ под Raspberry Pi в /opt/tools из git://github.com/raspberrypi/tools.git, 
-процесс вылядел следующим образом:
+процесс выглядел следующим образом:
 
 igor@igoral5 ~ $ mkdir raspberry
 igor@igoral5 ~ $ cd raspberry/
