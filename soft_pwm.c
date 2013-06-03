@@ -9,6 +9,14 @@
 #include <linux/gpio.h>
 
 
+#define PWM_FULL_INIT 2000
+#define PWM_ON_INIT 1000
+#define PWM0_GPIO 17
+#define PWM1_GPIO 18
+#define LOW 0
+#define HIGH 1
+
+
 struct my_attr 
 {
     struct attribute attr;
@@ -19,7 +27,7 @@ struct my_pwm
 {
     struct my_attr *pwm_full;
     struct my_attr *pwm_on;
-    int gpio;
+    unsigned gpio;
 };
 
 static struct my_attr pwm0_full = {
@@ -45,13 +53,13 @@ static struct my_attr pwm1_on = {
 static struct my_pwm pwm0 = {
     .pwm_full = &pwm0_full,
     .pwm_on = &pwm0_on,
-    .gpio = 17,
+    .gpio = PWM0_GPIO,
 };
 
 static struct my_pwm pwm1 = {
     .pwm_full = &pwm1_full,
     .pwm_on = &pwm1_on,
-    .gpio = 18,
+    .gpio = PWM1_GPIO,
 };
 
 
@@ -105,9 +113,9 @@ static int pwm_fun(void *arg)
     {
         pwm_full = atomic_read(&pwm->pwm_full->value);
         pwm_on = atomic_read(&pwm->pwm_on->value);
-        gpio_set_value(pwm->gpio, 0);
+        gpio_set_value(pwm->gpio, LOW);
         udelay(pwm_on);
-        gpio_set_value(pwm->gpio, 1);
+        gpio_set_value(pwm->gpio, HIGH);
         udelay(pwm_full - pwm_on);
     }
     gpio_free(pwm->gpio);
@@ -131,10 +139,12 @@ static struct kobject *mykobj;
 static int __init soft_pwm_module_init(void)
 {
     int err = 0;
-    atomic_set(&pwm0.pwm_full->value, 2000);
-    atomic_set(&pwm0.pwm_on->value, 1000);
-    atomic_set(&pwm1.pwm_full->value, 2000);
-    atomic_set(&pwm1.pwm_on->value, 1000);
+    printk(KERN_INFO "Address mythread0 0x%p\n", mythread0);
+    printk(KERN_INFO "Address mythread1 0x%p\n", mythread1);
+    atomic_set(&pwm0.pwm_full->value, PWM_FULL_INIT);
+    atomic_set(&pwm0.pwm_on->value, PWM_ON_INIT);
+    atomic_set(&pwm1.pwm_full->value, PWM_FULL_INIT);
+    atomic_set(&pwm1.pwm_on->value, PWM_ON_INIT);
     mykobj = kzalloc(sizeof(*mykobj), GFP_KERNEL);
     if (!mykobj)
     {
