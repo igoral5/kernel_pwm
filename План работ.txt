@@ -46,7 +46,7 @@ menuconfig GPIOLIB
           one or more of the GPIO drivers below.
 
           If unsure, say N.
-          
+
 Для создания каталога /sys/class/gpio должна быть включена поддержка файловой системы SYSFS:
 
 config GPIO_SYSFS

@@ -15,6 +15,7 @@
 #define PWM1_GPIO 18
 #define LOW 0
 #define HIGH 1
+#define MODE_FILE 0664
 
 
 struct my_attr 
@@ -32,22 +33,22 @@ struct my_pwm
 
 static struct my_attr pwm0_full = {
     .attr.name = "pwm0_full",
-    .attr.mode = 0666,
+    .attr.mode = MODE_FILE,
 };
 
 static struct my_attr pwm0_on = {
     .attr.name = "pwm0_on",
-    .attr.mode = 0666,
+    .attr.mode = MODE_FILE,
 };
 
 static struct my_attr pwm1_full = {
     .attr.name = "pwm1_full",
-    .attr.mode = 0666,
+    .attr.mode = MODE_FILE,
 };
 
 static struct my_attr pwm1_on = {
     .attr.name = "pwm1_on",
-    .attr.mode = 0666,
+    .attr.mode = MODE_FILE,
 };
 
 static struct my_pwm pwm0 = {
